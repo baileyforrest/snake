@@ -109,13 +109,11 @@ std::optional<Screen::KeyState> Screen::ReadKey() {
       res = get_wch(&wch);
       nodelay(stdscr, false);
 
-      if (res == ERR) {
-        throw std::runtime_error("mvaddch failed");
-      }
-
       // If another key is available, then assume it is alt + key
-      result.code = wch;
-      result.alt = true;
+      if (res != ERR) {
+        result.code = wch;
+        result.alt = true;
+      }
     }
 
     return result;

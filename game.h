@@ -19,11 +19,6 @@ class Game : public Screen::Observer {
  private:
   static constexpr int kInitialDelay = 100000;
 
-  enum class State {
-    kPlaying,
-    kGameOver,
-  };
-
   Vec2 RandomVec2();
   void DrawPixel(const Vec2& vec, int val);
   void Reset();
@@ -31,7 +26,6 @@ class Game : public Screen::Observer {
 
   std::unique_ptr<Screen> screen_{Screen::Create()};
   unsigned rand_seed_ = 0;
-  State state_ = State::kPlaying;
 
   int rows_ = 0;
   int cols_ = 0;
